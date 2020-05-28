@@ -4,12 +4,11 @@ import it.skrape.extract
 import it.skrape.selects.html5.span
 import it.skrape.skrape
 
-data class MyScrapedData(
-        var userName: String,
-        var repositoryNames: List<String>
-)
-
 fun main() {
+    scrapeGithub()
+}
+
+fun scrapeGithub() {
     val githubUserData = skrape {
         url = "https://github.com/skrapeit"
         mode = Mode.SOURCE
@@ -37,6 +36,6 @@ fun main() {
             )
         }
     }
-    println("${githubUserData.userName}'s repos are ${githubUserData.repositoryNames}")
+    println("${githubUserData.userName}'s repos are ${githubUserData.repositoryNames[0]}")
     // skrapeit's repos are skrape.it
 }
